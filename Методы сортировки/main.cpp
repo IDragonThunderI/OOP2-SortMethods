@@ -46,17 +46,7 @@ int main() {
 
 void Inclusion_sort(int B[], int n)
 {
-	for (int i = 1; i < n; i++) {
-		int buf = B[i];
-		int j = i - 1;
-
-		while (buf < B[j] && j >= 0) {
-			B[j + 1] = B[j];
-			j--;
-		}
-
-		B[j + 1] = buf;
-	}
+	
 }
 
 void Selection_sort(int B[], int n)

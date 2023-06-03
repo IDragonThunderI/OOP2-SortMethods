@@ -50,3 +50,11 @@ void RandomArray::print() const {
 RandomArray* RandomArray::copy() const {
 	return new RandomArray(*this);
 }
+
+void RandomArray::set_SortMethod(SortMethods* sortMethod) {
+	if (this->sortMethod != nullptr) {
+		delete this->sortMethod;
+	}
+	this->sortMethod = sortMethod;
+	this->sortMethod->set_array(this);
+}

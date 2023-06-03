@@ -17,4 +17,5 @@ public:
 	~RandomArray();
 	void print() const;
 	RandomArray* copy() const;
+	void set_SortMethod(SortMethods* sortMethod);
 };
