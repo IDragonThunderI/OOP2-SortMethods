@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <chrono>
 #include "array.h"
 #include "init.h"
 #include "sort.h"
@@ -21,6 +22,7 @@ RandomArray::RandomArray(const RandomArray& obj) {
 		break;
 	}
 	this->initType->copy(obj.get_numberElem(), obj.getConst_array());
+	this->sortMethod = obj.sortMethod;
 }
 
 RandomArray::~RandomArray() {
@@ -51,6 +53,7 @@ int* RandomArray::get_array() {
 void RandomArray::print() const {
 	size_t n = this->get_numberElem();
 	const int* arr = this->getConst_array();
+
 	if (n <= 100) {
 		std::cout << "RandomArray = { ";
 		for (size_t i = 0; i < n; i++) {
@@ -65,5 +68,20 @@ RandomArray* RandomArray::copy() const {
 }
 
 void RandomArray::sort() {
+	if (this->sortMethod == nullptr) {
+		this->set_SortMethod(new HoarSort);
+	}
 	this->sortMethod->sort();
+}
+
+long long RandomArray::inspectSort() {
+	if (this->sortMethod == nullptr) {
+		std::cerr << "Не выбран метод сортировки для исследования!\n";
+		return -1;
+	}
+	auto begin = std::chrono::steady_clock::now();
+	this->sortMethod->sort();
+	auto end = std::chrono::steady_clock::now();
+
+	return std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 }

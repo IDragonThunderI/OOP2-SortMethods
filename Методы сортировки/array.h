@@ -24,4 +24,5 @@ public:
 	void print() const;
 	RandomArray* copy() const;
 	void sort();
+	long long inspectSort();
 };
