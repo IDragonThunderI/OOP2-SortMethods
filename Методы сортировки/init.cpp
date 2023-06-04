@@ -2,22 +2,29 @@
 #include <ctime>
 #include "init.h"
 
-InitTypes::~InitTypes() {
-	delete this->array;
-}
-
 const size_t InitTypes::get_numberElem() const {
 	return this->numberElem;
 }
 
-const int* InitTypes::get_array() const {
+int* InitTypes::get_array() {
 	return this->array;
+}
+
+void InitTypes::copy(const size_t arrSize, const int* array) {
+	this->array = new int[this->numberElem = arrSize];
+	for (size_t i = 0; i < numberElem; i++) {
+		this->array[i] = array[i];
+	}
+}
+
+InitTypes::~InitTypes() {
+	delete this->array;
 }
 
 void UnorderedInitType::init(size_t arrSize) {
 	this->array = new int[numberElem = arrSize];
 	srand(time(NULL));
-	for (int i = 0; i < numberElem; i++) {
+	for (size_t i = 0; i < numberElem; i++) {
 		array[i] = rand() % 100 + 1;
 	}
 }
@@ -29,7 +36,7 @@ const arrayType UnorderedInitType::get_arrayType() const {
 void AscendingInitType::init(size_t arrSize) {
 	this->array = new int[numberElem = arrSize];
 	srand(time(NULL));
-	for (int i = 0; i < numberElem; i++) {
+	for (size_t i = 0; i < numberElem; i++) {
 		array[i] = rand() % 100 + 1;
 	}
 	qsort(array, numberElem, sizeof(int),
@@ -45,7 +52,7 @@ const arrayType AscendingInitType::get_arrayType() const {
 void DescendingInitType::init(size_t arrSize) {
 	this->array = new int[numberElem = arrSize];
 	srand(time(NULL));
-	for (int i = 0; i < numberElem; i++) {
+	for (size_t i = 0; i < numberElem; i++) {
 		array[i] = rand() % 100 + 1;
 	}
 	qsort(array, numberElem, sizeof(int),

@@ -1,11 +1,20 @@
 ﻿#pragma once
+#include "array.h"
 
-class SortMethods { // Класс для хранения методов сортировки
+class RandomArray;
+
+class SortMethods { // Общий интерфейс для всех методов сортировки
 protected:
-	RandomArray* array = nullptr;
+	RandomArray* randomArray = nullptr;
+
 public:
+	void set_array(RandomArray* randomArray);
+	const size_t get_numberElem() const;
+	int* get_array();
+
+	virtual ~SortMethods();
+	
 	virtual void sort() = 0;
-	void set_array(RandomArray* array);
 };
 
 class InclusionSort : public SortMethods {
@@ -26,8 +35,14 @@ class ShellSort : public SortMethods {
 
 class HoarSort : public SortMethods {
 	void sort() override;
+
+	// Подпрограмма для рекурсивной сортировки Хоара
+	void Qsort(int arr[], int f, int l);
 };
 
 class HeapSort : public SortMethods {
 	void sort() override;
+
+	// Подпрограмма для рекурсивной пирамидальной сортировки
+	void Make_heap(int arr[], int L, int R);
 };
