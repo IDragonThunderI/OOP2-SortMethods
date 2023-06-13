@@ -55,7 +55,7 @@ void RandomArray::print() const {
 	const int* arr = this->getConst_array();
 
 	if (n <= 100) {
-		std::cout << "RandomArray = { ";
+		std::cout << "Array = { ";
 		for (size_t i = 0; i < n; i++) {
 			std::cout << arr[i] << " ";
 		}
