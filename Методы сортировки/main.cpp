@@ -8,8 +8,24 @@ int main() {
 
 	int arraySize;
 	std::cout << std::fixed << "Введите размер массива: ";
-	std::cin >> arraySize;
-	
+
+	while (true) {
+		try {
+			if (!(std::cin >> arraySize)) {
+				throw std::invalid_argument("Недопустимое значение параметра");
+			}
+			if (arraySize < 1) {
+				throw std::invalid_argument("Недопустимое значение параметра\nПодсказка: Размер массива должен быть больше 0");
+			}
+			break;
+		}
+		catch (const std::invalid_argument& error) {
+			std::cerr << "Ошибка: " << error.what() << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	}
+
 	/*================================ НЕУПОРЯДОЧЕННЫЙ МАССИВ ================================*/
 	std::cout << "\n================================ Сортировка неупорядоченного массива: ================================\n\n";
 
