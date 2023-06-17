@@ -14,10 +14,6 @@ int* SortMethods::get_array() {
 	return this->randomArray->get_array();
 }
 
-SortMethods::~SortMethods() {
-
-}
-
 void InclusionSort::sort() {
 	size_t n = get_numberElem();
 	int* arr = get_array();
@@ -166,8 +162,7 @@ void HeapSort::sort() {
 	}
 }
 
-void HeapSort::Make_heap(int arr[], int L, int R)
-{
+void HeapSort::Make_heap(int arr[], int L, int R) {
 	int i = L;
 	int j = 2 * L + 1;
 	int x = arr[L];
