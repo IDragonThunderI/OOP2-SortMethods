@@ -1,8 +1,6 @@
 ﻿#include <iostream>
 #include <chrono>
 #include "array.h"
-#include "init.h"
-#include "sort.h"
 
 RandomArray::RandomArray(size_t numberElem, InitTypes* type) {
 	this->initType = type;

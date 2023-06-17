@@ -2,8 +2,6 @@
 #include <chrono>
 #include <iomanip>
 #include "array.h"
-#include "init.h"
-#include "sort.h"
 
 int main() {
 	setlocale(LC_ALL, "ru_RU");
